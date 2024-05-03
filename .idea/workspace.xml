@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c68cf26-b2a5-4356-bd00-ef283e5e7d04" name="Changes" comment="Get TCP communication working" />
+    <list default="true" id="8c68cf26-b2a5-4356-bd00-ef283e5e7d04" name="Changes" comment="Fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +63,7 @@
       <workItem from="1714384853119" duration="1308000" />
       <workItem from="1714465867961" duration="1192000" />
       <workItem from="1714628201480" duration="1305000" />
-      <workItem from="1714711272167" duration="4492000" />
+      <workItem from="1714711272167" duration="4682000" />
     </task>
     <task id="LOCAL-00001" summary="Add frontend">
       <option name="closed" value="true" />
@@ -89,16 +89,52 @@
       <option name="project" value="LOCAL" />
       <updated>1714721737904</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix">
+      <option name="closed" value="true" />
+      <created>1714721806290</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714721806290</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fix">
+      <option name="closed" value="true" />
+      <created>1714721865990</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714721865990</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fix">
+      <option name="closed" value="true" />
+      <created>1714721874455</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714721874455</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add frontend" />
     <MESSAGE value="Add iot code" />
     <MESSAGE value="Get TCP communication working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get TCP communication working" />
+    <MESSAGE value="Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix" />
   </component>
 </project>
