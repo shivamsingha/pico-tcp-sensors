@@ -36,47 +36,25 @@ class DFRobotEnvironmentalSensor:
         return self._detect_device_address() == DEV_ADDRESS
 
     def get_temperature(self):
-        data = int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x14, 2), 'big')
-        # temp = (-45) + ((data * 175.00) / 1024.00 / 64.00)
-        # if unit == TEMP_F:
-        #     temp = temp * 1.8 + 32
-        # return round(temp, 2)
-        return data
+        return int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x14, 2), 'big')
 
     def get_humidity(self):
-        data = int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x16, 2), 'big')
-        # humidity = (data / 1024) * 100 / 64
-        # return humidity
-        return data
+        return int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x16, 2), 'big')
+
+    def get_ultraviolet_version(self):
+        return int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x05, 2), 'big')
 
     def get_ultraviolet_intensity(self):
-        version = int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x05, 2), 'big')
-        if version == 0x1001:
-            data = int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x10, 2), 'big')
-            # ultraviolet = data / 1800
-            return data
-        else:
-            data = int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x10, 2), 'big')
-            # output_voltage = 3.0 * data / 1024
-            # ultraviolet = (output_voltage - 0.99) * (15.0 - 0.0) / (2.9 - 0.99) + 0.0
-            return data
-        # return round(ultraviolet, 2)
+        return int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x10, 2), 'big')
 
     def get_luminous_intensity(self):
-        data = int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x12, 2), 'big')
-        # luminous = data * (1.0023 + data * (8.1488e-5 + data * (-9.3924e-9 + data * 6.0135e-13)))
-        # return round(luminous, 2)
-        return data
+        return int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x12, 2), 'big')
 
     def get_atmosphere_pressure(self):
-        data = int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x18, 2), 'big')
-        return data
+        return int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x18, 2), 'big')
 
     def get_elevation(self):
-        data = int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x18, 2), 'big')
-        # elevation = 44330 * (1.0 - pow(data / 1015.0, 0.1903))
-        # return round(elevation, 2)
-        return data
+        return int.from_bytes(self.i2c.readfrom_mem(DEV_ADDRESS, 0x18, 2), 'big')
 
 
 def connect():
@@ -114,27 +92,17 @@ if connect():
     if sensor.begin():
         while True:
             sleep(1)
-            temp = sensor.get_temperature()
-            humidity = sensor.get_humidity()
-            uv = sensor.get_ultraviolet_intensity()
-            lumen = sensor.get_luminous_intensity()
-            pressure = sensor.get_atmosphere_pressure()
-            elevation = sensor.get_elevation()
 
-            print(temp)
-            print(humidity)
-            print(uv)
-            print(lumen)
-            print(pressure)
-            print(elevation)
+            data = [sensor.get_temperature(), sensor.get_humidity(), sensor.get_ultraviolet_version(),
+                    sensor.get_ultraviolet_intensity(), sensor.get_luminous_intensity(),
+                    sensor.get_atmosphere_pressure(), sensor.get_elevation()]
+
+            print(data)
+            for x in data:
+                bytes_written = sock.write(x.to_bytes(4, 'big'))
+                if bytes_written != 4:
+                    print(f'Error: {bytes_written} bytes written, expected 4')
             print()
-
-            sock.write(temp.to_bytes(4, 'big'))
-            sock.write(humidity.to_bytes(4, 'big'))
-            sock.write(uv.to_bytes(4, 'big'))
-            sock.write(lumen.to_bytes(4, 'big'))
-            sock.write(pressure.to_bytes(4, 'big'))
-            sock.write(elevation.to_bytes(4, 'big'))
 
     else:
         print("Failed to initialize sensor")
