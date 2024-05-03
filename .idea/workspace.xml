@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c68cf26-b2a5-4356-bd00-ef283e5e7d04" name="Changes" comment="Add iot code">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iot/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/iot/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/iot/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iot/rpi-pico-w-http-sensors.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iot/rpi-pico-w-http-sensors.iml" afterDir="false" />
-    </list>
+    <list default="true" id="8c68cf26-b2a5-4356-bd00-ef283e5e7d04" name="Changes" comment="Get TCP communication working" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +15,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo">{
@@ -68,7 +63,7 @@
       <workItem from="1714384853119" duration="1308000" />
       <workItem from="1714465867961" duration="1192000" />
       <workItem from="1714628201480" duration="1305000" />
-      <workItem from="1714711272167" duration="4132000" />
+      <workItem from="1714711272167" duration="4492000" />
     </task>
     <task id="LOCAL-00001" summary="Add frontend">
       <option name="closed" value="true" />
@@ -86,7 +81,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714714347280</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Get TCP communication working">
+      <option name="closed" value="true" />
+      <created>1714721737904</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714721737904</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,6 +98,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add frontend" />
     <MESSAGE value="Add iot code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add iot code" />
+    <MESSAGE value="Get TCP communication working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Get TCP communication working" />
   </component>
 </project>
