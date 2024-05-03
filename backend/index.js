@@ -3,18 +3,19 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const MAX_SIZE = 20;
 // In-memory storage for sensor data
 let sensorData = []
 
 function getTemperature(data) {
-    let temp = (-45) + ((data * 175.00) / 1024.00 / 64.00);
+    const temp = (-45) + ((data * 175.00) / 1024.00 / 64.00);
 
     return Math.round(temp * 100) / 100;
 }
 
 function getHumidity(data) {
     const humidity = (data / 1024) * 100 / 64;
-    return humidity;
+    return Math.round(humidity * 100) / 100;
 }
 
 function getUltravioletIntensity(data, version) {
@@ -50,7 +51,7 @@ const tcpServer = net.createServer((socket) => {
 
     socket.on('data', (data) => {
         uv_version = data.readInt32BE(2 * 4);
-        sensorData = {
+        sensorDataEntry = {
             temperature: getTemperature(data.readInt32BE()),
             humidity: getHumidity(data.readInt32BE(4)),
             ultraviolet: getUltravioletIntensity(data.readInt32BE(3 * 4), uv_version),
@@ -58,7 +59,13 @@ const tcpServer = net.createServer((socket) => {
             pressure: getAtmospherePressure(data.readInt32BE(5 * 4)),
             elevation: getElevation(data.readInt32BE(6 * 4))
         };
-        console.log(sensorData);
+
+        sensorData.push(sensorDataEntry);
+
+        // If the array size exceeds the maximum size, remove the oldest entry
+        if (sensorData.length > MAX_SIZE) {
+            sensorData.shift();
+        }
     });
 
     socket.on('end', () => {
